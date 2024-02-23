@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 @section('title')
@@ -18,7 +17,7 @@
                         <form action="{{ route('menus.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label >Tên menu</label>
+                                <label>Tên menu</label>
                                 <input type="text"
                                        class="form-control"
                                        placeholder="Nhập tên menu"
@@ -26,10 +25,10 @@
                                 >
                             </div>
                             <div class="form-group">
-                                <label >Chọn menu cha</label>
-                                <select class="form-control" name="parent_id" >
+                                <label>Chọn menu cha</label>
+                                <select class="form-control" name="parent_id">
                                     <option value="0">Danh mục cha</option>
-{{--                                    {!! $htmlOption !!}--}}
+                                    {!! $optionSelect !!}
                                 </select>
                             </div>
 
