@@ -34,7 +34,28 @@ class MenuController extends Controller
     {
         $this->menu->create([
             'name' => $request->name,
-            'parent_id' => $request->parent_id
+            'parent_id' => $request->parent_id,
+            'slug' => str_slug($request->name)
+        ]);
+
+        return redirect()->route('menus.index');
+
+    }
+
+    public function edit($id)
+    {
+        $menuFind = $this ->menu->find($id);
+        $optionSelectIdParent = $this->menuRecusive->menuRecusiveEdit($menuFind->parent_id);
+        return view('menus.edit', compact('menuFind','optionSelectIdParent'));
+    }
+
+
+    public function update($id,Request $request)
+    {
+        $this ->menu->find($id)->update([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'slug' => str_slug($request ->name)
         ]);
 
         return redirect()->route('menus.index');
