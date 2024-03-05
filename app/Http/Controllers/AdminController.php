@@ -18,7 +18,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ], $remember)) {
-            return redirect()->route('home');
+            return redirect()->to('home');
         }
         else {
             return dd('sai');
