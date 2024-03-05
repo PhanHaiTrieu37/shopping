@@ -20,13 +20,13 @@ class MenuController extends Controller
     public function index()
     {
         $menus = $this->menu->paginate(10);
-        return view('menus.index', compact('menus'));
+        return view('admin.menus.index', compact('menus'));
     }
 
     public function create()
     {
         $optionSelect = $this->menuRecusive->menuRecusiveAdd();
-        return view('menus.add', compact('optionSelect'));
+        return view('admin.menus.add', compact('optionSelect'));
 
     }
 
@@ -46,7 +46,7 @@ class MenuController extends Controller
     {
         $menuFind = $this ->menu->find($id);
         $optionSelectIdParent = $this->menuRecusive->menuRecusiveEdit($menuFind->parent_id);
-        return view('menus.edit', compact('menuFind','optionSelectIdParent'));
+        return view('admin.menus.edit', compact('menuFind','optionSelectIdParent'));
     }
 
 

@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         $htmlOption = $this ->getCategory($parentId = '');
-        return view('category.add', compact('htmlOption'));
+        return view('admin.category.add', compact('htmlOption'));
 
     }
 
@@ -34,7 +34,7 @@ class CategoryController extends Controller
     {
         $category = $this ->category->find($id);
         $htmlOption = $this ->getCategory($category->parent_id);
-        return view('category.edit', compact('category', 'htmlOption'));
+        return view('admin.category.edit', compact('category', 'htmlOption'));
 
     }
 
@@ -70,6 +70,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this ->category->latest()->paginate(5);
-        return view('category.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 }
