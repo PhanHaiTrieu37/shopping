@@ -4,7 +4,9 @@
     <title>Product</title>
 @endsection
 
-
+@section('css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -14,7 +16,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="" class="btn btn-success float-right">Add</a>
+                        <a href="{{ route('product.create') }}" class="btn btn-success float-right">Add</a>
                     </div>
                     <div class="col-md-12">
                         <table class="table">
@@ -63,6 +65,8 @@
         </div>
     </div>
 @endsection
+
+
 
 
 
