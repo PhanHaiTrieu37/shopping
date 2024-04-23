@@ -1,0 +1,1 @@
+[{"id":null,"ten_cpu":null,"thong_so_ky_thuat":null,"gia_thanh":null,"bao_hanh":null},{"id":null,"ten_cpu":null,"thong_so_ky_thuat":null,"gia_thanh":null,"bao_hanh":null}]

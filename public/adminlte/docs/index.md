@@ -15,12 +15,12 @@ Visit the releases section on Github and download the [latest release](https://g
 
 ###### __Via NPM__
 ```bash
-npm install admin-lte@^3.0 --save
+npm install admins-lte@^3.0 --save
 ```
 
 ###### __Via Yarn__
 ```bash
-yarn add admin-lte@^3.0
+yarn add admins-lte@^3.0
 ```
 
 ###### __Via Composer__

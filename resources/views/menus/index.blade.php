@@ -11,12 +11,12 @@
         @include('partials.content-header', ['name'=> 'Menu', 'key' => 'list'])
 
         <div class="content">
-            test menus admin
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <a href="{{ route('menus.create') }}" class="btn btn-success float-right">Add</a>
                     </div>
+                    test no admin
                     <div class="col-md-12">
                         <table class="table">
                             <thead>

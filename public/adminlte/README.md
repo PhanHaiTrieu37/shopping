@@ -28,12 +28,12 @@ Download from [Github releases](https://github.com/ColorlibHQ/AdminLTE/releases)
 
 __Via NPM__
 ```bash
-npm install admin-lte@^3.0 --save
+npm install admins-lte@^3.0 --save
 ```
 
 __Via Yarn__
 ```bash
-yarn add admin-lte@^3.0
+yarn add admins-lte@^3.0
 ```
 
 __Via Composer__

@@ -36,4 +36,14 @@ class AdminProductController extends Controller
         $htmlOption = $recusive ->categoryRecusive($parentId);
         return $htmlOption;
     }
+
+    public function store(Request $request)
+    {
+//        $path = Storage::putFileAs('feature_path_img', $request->file('feature_path_img'), $request->user()->id);
+//        $path = $request->file('feature_path_img')->store('product');
+
+//        return view('admin.product.index');
+        return redirect()->route('product.index');
+
+    }
 }
