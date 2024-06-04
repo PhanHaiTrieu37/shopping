@@ -46,7 +46,7 @@
                                 <input type="file"
                                        class="form-control-file"
                                        placeholder="chọn ảnh đại diện"
-                                       name="feature_path_img"
+                                       name="feature_image_path"
                                 >
                             </div>
 
@@ -61,7 +61,7 @@
 
                             <div class="form-group">
                                 <label >Chọn danh mục </label>
-                                <select class="form-control select_init" name="parent_id" >
+                                <select class="form-control select_init" name="category_id" >
                                     <option value="0">Danh mục cha</option>
                                     {!! $htmlOption !!}
                                 </select>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <textarea name="content" class="form-control my-editor"></textarea>
+                        <textarea name="contents" class="form-control my-editor"></textarea>
 
                     </div>
                 </div>

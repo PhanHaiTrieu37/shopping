@@ -5,7 +5,8 @@
 @endsection
 
 @section('css')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link href="{{ asset('admins/product/index/list.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -32,15 +33,15 @@
                             </thead>
 
                             <tbody>
-{{--                            @foreach($menus as $menu)--}}
+                            @foreach($products as $productItem)
                                 <tr>
-                                    <th scope="row"> 1</th>
-                                    <td>iphone 15</td>
-                                    <td>1.000 $</td>
+                                    <th scope="row">{{ $productItem->id }}</th>
+                                    <td>{{ $productItem->name }}</td>
+                                    <td>{{ number_format($productItem->price) }}</td>
                                     <td>
-                                        <img src="">
+                                        <img class="product-image-150-200" src={{ $productItem->feature_image_path }}>
                                     </td>
-                                    <td>Điện thoại</td>
+                                    <td>{{ optional($productItem->category)->name }}</td>
                                     <td>
                                         <a href=""
                                            class="btn btn-default">Sửa</a>
@@ -50,14 +51,14 @@
                                     </td>
                                 </tr>
 
-{{--                            @endforeach--}}
+                            @endforeach
 
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-md-12">
-{{--                        {{ $menus->links() }}--}}
+                        {{ $products->links() }}
                     </div>
 
                 </div>
