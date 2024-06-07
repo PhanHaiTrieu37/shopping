@@ -97,8 +97,15 @@
                             </div>
                         </div>
 
-                        <textarea name="contents" class="form-control my-editor">{{ $product->content }}</textarea>
-                    </div><button type="submit" class="btn btn-primary">Thêm</button>
+                        <div class="col-md12">
+                            <div class="form-group">
+                                <label >Nhập nội dung cho sản phẩm</label>
+                                <textarea name="contents" class="form-control my-editor"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
                     </div>
 
             </div>

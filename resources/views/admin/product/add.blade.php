@@ -22,23 +22,33 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-md12">
+
                         <div class="col-md6">
                             <div class="form-group">
                                 <label >Tên sản phẩm</label>
                                 <input type="text"
-                                       class="form-control"
+                                       class="form-control @error('name') is-invalid @enderror"
                                        placeholder="Nhập tên sản phẩm"
                                        name="name"
+                                       value="{{ old('name') }}"
                                 >
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label >Giá sản phẩm</label>
                                 <input type="text"
-                                       class="form-control"
+                                       class="form-control @error('price') is-invalid @enderror"
                                        placeholder="Nhập giá sản phẩm"
                                        name="price"
+                                       value="{{ old('price') }}"
                                 >
+                                @error('price')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -61,10 +71,13 @@
 
                             <div class="form-group">
                                 <label >Chọn danh mục </label>
-                                <select class="form-control select_init" name="category_id" >
+                                <select class="form-control select_init @error('category_id') is-invalid @enderror" name="category_id" >
                                     <option value="0">Danh mục cha</option>
                                     {!! $htmlOption !!}
                                 </select>
+                                @error('category_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -75,15 +88,26 @@
                             </div>
                         </div>
 
-                        <textarea name="contents" class="form-control my-editor"></textarea>
+                        <div class="col-md12">
+                            <div class="form-group">
+                                <label >Nhập nội dung cho sản phẩm</label>
+                                <textarea
+                                    name="contents"
+                                    class="form-control my-editor @error('contents') is-invalid @enderror">
+                                    {{ old('contents') }}
+                                </textarea>
+                                @error('contents')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
                     </div>
+
                 </div>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
             </div>
 
-
-
-            <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
     </div>
 @endsection
