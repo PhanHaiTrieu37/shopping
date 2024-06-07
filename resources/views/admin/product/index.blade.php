@@ -9,6 +9,13 @@
     <link href="{{ asset('admins/product/index/list.css') }}" rel="stylesheet" />
 @endsection
 
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('admins/product/index/list.js') }}"></script>
+@endsection
+
+
+
 @section('content')
     <div class="content-wrapper">
         @include('partials.content-header', ['name'=> 'Product', 'key' => 'list'])
@@ -43,10 +50,11 @@
                                     </td>
                                     <td>{{ optional($productItem->category)->name }}</td>
                                     <td>
-                                        <a href=""
+                                        <a href="{{ route('product.edit', ['id' => $productItem->id]) }}"
                                            class="btn btn-default">Sửa</a>
                                         <a href=""
-                                           class="btn btn-danger">Xóa</a>
+                                           data-url="{{ route('product.delete', ['id' => $productItem->id]) }}"
+                                           class="btn btn-danger action_delete">Xóa</a>
 
                                     </td>
                                 </tr>

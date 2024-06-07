@@ -188,6 +188,21 @@ Route::prefix('admin')->group(function () {
             'uses' => 'AdminProductController@store'
         ]);
 
+        Route::get('/edit/{id}', [
+            'as' => 'product.edit',
+            'uses' => 'AdminProductController@edit'
+        ]);
+
+        Route::post('/update/{id}', [
+            'as' => 'product.update',
+            'uses' => 'AdminProductController@update'
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'product.delete',
+            'uses' => 'AdminProductController@delete'
+        ]);
+
     });
 });
 

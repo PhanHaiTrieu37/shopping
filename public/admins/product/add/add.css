@@ -1,4 +1,27 @@
 
 li.select2-selection__choice {
-    background-color: #258cfbc7 !important;
+    background-color: #1b2d1f !important;
+    padding: 10px;
+}
+
+.container_img {
+    padding-top: 20px;
+}
+
+.image_main_product {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.image_detail_product {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.select2-selection__choice__remove {
+    padding: 0px 0px 2px 2px !important;
+    margin: 0px !important;
+    border: 0px !important;
 }

@@ -15,9 +15,9 @@
 
 @section('content')
     <div class="content-wrapper">
-        @include('partials.content-header', ['name'=> 'Product', 'key' => 'Add'])
+        @include('partials.content-header', ['name'=> 'Product', 'key' => 'Edit'])
 
-        <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('product.update', ['id' => $product->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="content">
                 <div class="container-fluid">
@@ -29,6 +29,7 @@
                                        class="form-control"
                                        placeholder="Nhập tên sản phẩm"
                                        name="name"
+                                       value="{{ $product->name }}"
                                 >
                             </div>
 
@@ -38,6 +39,7 @@
                                        class="form-control"
                                        placeholder="Nhập giá sản phẩm"
                                        name="price"
+                                       value="{{ $product->price }}"
                                 >
                             </div>
 
@@ -48,6 +50,12 @@
                                        placeholder="chọn ảnh đại diện"
                                        name="feature_image_path"
                                 >
+                                <div class="col-md-3 container_img">
+                                    <div class="row">
+                                        <img class="image_main_product" src="{{ $product->feature_image_path }}">
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="form-group">
@@ -57,6 +65,17 @@
                                        class="form-control-file"
                                        name="image_path[]"
                                 >
+                                <div class="col-md-12 container_img">
+                                    <div class="row">
+                                    @foreach($product->productImages as $productImageItem)
+                                        <div class="col-md-3">
+                                            <div class="row">
+                                                <img class="image_detail_product" src="{{ $productImageItem->image_path }}">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -70,20 +89,21 @@
                             <div class="form-group">
                                 <label >Nhập tags cho sản phẩm</label>
                                 <select name="tags[]" class="form-control tags_select_choose" multiple="multiple">
+                                    @foreach($product->tags as $tagItem)
+                                        <option value="{{ $tagItem->name }}" selected>{{ $tagItem->name }}</option>
 
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
-                        <textarea name="contents" class="form-control my-editor"></textarea>
-
+                        <textarea name="contents" class="form-control my-editor">{{ $product->content }}</textarea>
+                    </div><button type="submit" class="btn btn-primary">Thêm</button>
                     </div>
-                </div>
+
             </div>
 
 
-
-            <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
     </div>
 @endsection
@@ -100,46 +120,46 @@
 
     <script src="https://cdn.tiny.cloud/1/2ask8mc9i8f77tashz218gbd2gubr1ikn97t6tp8dpatwr5f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{ asset('admins/product/add/add.js ') }}"></script>
-{{--<script>--}}
-{{--    var editor_config = {--}}
-{{--        path_absolute : "/",--}}
-{{--        selector: 'textarea.my-editor',--}}
-{{--        height: 350,--}}
-{{--        relative_urls: false,--}}
-{{--        plugins: [--}}
-{{--            "advlist autolink lists link image charmap print preview hr anchor pagebreak",--}}
-{{--            "searchreplace wordcount visualblocks visualchars code fullscreen",--}}
-{{--            "insertdatetime media nonbreaking save table directionality",--}}
-{{--            "emoticons template paste textpattern"--}}
-{{--        ],--}}
-{{--        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",--}}
-{{--        file_picker_callback : function(callback, value, meta) {--}}
-{{--            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;--}}
-{{--            var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;--}}
+{{--    <script>--}}
+{{--        var editor_config = {--}}
+{{--            path_absolute : "/",--}}
+{{--            selector: 'textarea.my-editor',--}}
+{{--            height: 350,--}}
+{{--            relative_urls: false,--}}
+{{--            plugins: [--}}
+{{--                "advlist autolink lists link image charmap print preview hr anchor pagebreak",--}}
+{{--                "searchreplace wordcount visualblocks visualchars code fullscreen",--}}
+{{--                "insertdatetime media nonbreaking save table directionality",--}}
+{{--                "emoticons template paste textpattern"--}}
+{{--            ],--}}
+{{--            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",--}}
+{{--            file_picker_callback : function(callback, value, meta) {--}}
+{{--                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;--}}
+{{--                var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;--}}
 
-{{--            var cmsURL = editor_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;--}}
-{{--            if (meta.filetype == 'image') {--}}
-{{--                cmsURL = cmsURL + "&type=Images";--}}
-{{--            } else {--}}
-{{--                cmsURL = cmsURL + "&type=Files";--}}
-{{--            }--}}
-
-{{--            tinyMCE.activeEditor.windowManager.openUrl({--}}
-{{--                url : cmsURL,--}}
-{{--                title : 'Filemanager',--}}
-{{--                width : x * 0.8,--}}
-{{--                height : y * 0.8,--}}
-{{--                resizable : "yes",--}}
-{{--                close_previous : "no",--}}
-{{--                onMessage: (api, message) => {--}}
-{{--                    callback(message.content);--}}
+{{--                var cmsURL = editor_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;--}}
+{{--                if (meta.filetype == 'image') {--}}
+{{--                    cmsURL = cmsURL + "&type=Images";--}}
+{{--                } else {--}}
+{{--                    cmsURL = cmsURL + "&type=Files";--}}
 {{--                }--}}
-{{--            });--}}
-{{--        }--}}
-{{--    };--}}
 
-{{--    tinymce.init(editor_config);--}}
-{{--</script>--}}
+{{--                tinyMCE.activeEditor.windowManager.openUrl({--}}
+{{--                    url : cmsURL,--}}
+{{--                    title : 'Filemanager',--}}
+{{--                    width : x * 0.8,--}}
+{{--                    height : y * 0.8,--}}
+{{--                    resizable : "yes",--}}
+{{--                    close_previous : "no",--}}
+{{--                    onMessage: (api, message) => {--}}
+{{--                        callback(message.content);--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        };--}}
+
+{{--        tinymce.init(editor_config);--}}
+{{--    </script>--}}
 @endsection
 
 
