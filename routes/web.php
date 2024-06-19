@@ -204,6 +204,25 @@ Route::prefix('admin')->group(function () {
         ]);
 
     });
+
+    Route::prefix('slider')->group(function () {
+
+        Route::get('/', [
+            'as' => 'slider.index',
+            'uses' => 'SliderAdminController@index'
+        ]);
+
+        Route::get('/create', [
+            'as' => 'slider.create',
+            'uses' => 'SliderAdminController@create'
+        ]);
+
+        Route::post('/store', [
+            'as' => 'slider.store',
+            'uses' => 'SliderAdminController@store'
+        ]);
+
+    });
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' ], function () {
