@@ -12,3 +12,10 @@
     margin-top: 10px;
 
 }
+
+.img_slider_150_100 {
+    margin: 8px;
+    height: 100%;
+    width: 150px;
+    object-fit: cover;
+}
