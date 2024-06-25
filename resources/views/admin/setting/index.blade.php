@@ -24,14 +24,24 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="" class="btn btn-success float-right">Add</a>
+                        <div class="dropdown float-right m-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                select text
+                            </button>
+                            <div class="dropdown-menu ">
+                                <a class="dropdown-item" href="{{ route('settings.create'). '?type=Text' }}">Text</a>
+                                <a class="dropdown-item" href="{{ route('settings.create'). '?type=Textarean' }}">Text arean</a>
+
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col">Config key </th>
+                                <th scope="col">Config value </th>
 
                             </tr>
                             </thead>
@@ -40,6 +50,7 @@
 {{--                            @foreach($products as $productItem)--}}
                                 <tr>
                                     <th scope="row">0</th>
+                                    <th scope="row">2</th>
 
                                     <td>
                                         <a href=""
