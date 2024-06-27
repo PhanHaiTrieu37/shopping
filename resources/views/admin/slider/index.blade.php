@@ -10,7 +10,7 @@
 
 @section('js')
     <script src="{{ asset('vendor/sweetAlert2/sweetAlert2@11.js') }}"></script>
-    <script src="{{ asset('admins/slider/index/index.js') }}"></script>
+    <script src="{{ asset('admins/delete.js') }}"></script>
 @endsection
 
 @section('content')

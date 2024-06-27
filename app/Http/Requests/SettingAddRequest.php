@@ -24,8 +24,8 @@ class SettingAddRequest extends FormRequest
     public function rules()
     {
         return [
+            'config_key' => 'required|unique:settings|max:255|min:5',
             'config_value' => 'required|min:5',
-            'config_key' => 'required|min:5',
 
 
         ];
@@ -36,6 +36,7 @@ class SettingAddRequest extends FormRequest
         return [
             'config_value.required' => 'config value không được phép để trống',
             'config_key.required' => 'config key không được phép để trống',
+            'config_key.unique' => 'config key không được phép trùng',
 
         ];
     }

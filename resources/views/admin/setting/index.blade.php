@@ -11,7 +11,7 @@
 
 @section('js')
     <script src="{{ asset('vendor/sweetAlert2/sweetAlert2@11.js') }}"></script>
-    <script src="{{ asset('admins/product/index/list.js') }}"></script>
+    <script src="{{ asset('admins/delete.js') }}"></script>
 @endsection
 
 
@@ -26,11 +26,11 @@
                     <div class="col-md-12">
                         <div class="dropdown float-right m-2">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                select text
+                                Add setting
                             </button>
                             <div class="dropdown-menu ">
                                 <a class="dropdown-item" href="{{ route('settings.create'). '?type=Text' }}">Text</a>
-                                <a class="dropdown-item" href="{{ route('settings.create'). '?type=Textarean' }}">Text arean</a>
+                                <a class="dropdown-item" href="{{ route('settings.create'). '?type=Textarea' }}">Text area</a>
 
                             </div>
                         </div>
@@ -42,34 +42,36 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Config key </th>
                                 <th scope="col">Config value </th>
+                                <th scope="col">actions </th>
 
                             </tr>
                             </thead>
 
                             <tbody>
-{{--                            @foreach($products as $productItem)--}}
+                            @foreach($settings as $settingItem)
                                 <tr>
-                                    <th scope="row">0</th>
-                                    <th scope="row">2</th>
+                                    <th scope="row">{{ $settingItem ->id }}</th>
+                                    <th scope="row">{{ $settingItem ->config_key }}</th>
+                                    <th scope="row">{{ $settingItem ->config_value }}</th>
 
                                     <td>
-                                        <a href=""
+                                        <a href="{{ route('settings.edit', ['id'=>$settingItem ->id. '?type=' .$settingItem ->type ] ) }}"
                                            class="btn btn-default">Sửa</a>
                                         <a href=""
-
+                                            data-url ="{{ route('settings.delete', ['id'=>$settingItem ->id]) }}"
                                            class="btn btn-danger action_delete">Xóa</a>
 
                                     </td>
                                 </tr>
 
-{{--                            @endforeach--}}
+                            @endforeach
 
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-md-12">
-{{--                        {{ $products->links() }}--}}
+                        {{ $settings->links() }}
                     </div>
 
                 </div>

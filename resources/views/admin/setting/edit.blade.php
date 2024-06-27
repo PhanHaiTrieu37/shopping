@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Setting add</title>
+    <title>Setting edit</title>
 @endsection
 
 @section('css')
@@ -10,13 +10,13 @@
 
 @section('content')
     <div class="content-wrapper">
-        @include('partials.content-header', ['name'=> 'Settings', 'key' => 'Add'])
+        @include('partials.content-header', ['name'=> 'Settings', 'key' => 'Edit'])
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="{{ route('settings.store') .'?type='. request()->type }}" method="post">
+                        <form action="{{ route('settings.update', ['id'=>$setting->id]) }}" method="post">
                             @csrf
                             <div class="col-md6">
                                 <div class="form-group">
@@ -25,7 +25,7 @@
                                            class="form-control @error('config_key') is-invalid @enderror"
                                            placeholder="Nhập Config key"
                                            name="config_key"
-                                           value="{{ old('config_key') }}"
+                                           value="{{ $setting->config_key }}"
                                     >
                                     @error('config_key')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -39,7 +39,7 @@
                                                class="form-control @error('config_value') is-invalid @enderror"
                                                placeholder="Nhập Config value"
                                                name="config_value"
-                                               value="{{ old('config_value') }}"
+                                               value="{{ $setting->config_value }}"
                                         >
                                         @elseif(request()->type === 'Textarea')
 
@@ -47,7 +47,7 @@
                                                       class="form-control @error('config_value') is-invalid @enderror"
                                                       rows="5"
                                                       value="{{ old('config_value') }}"
-                                                      placeholder="Nhập Config value"></textarea>
+                                                      placeholder="Nhập Config value">{{ $setting->config_value }}</textarea>
                                     @endif
                                     @error('config_value')
                                     <div class="alert alert-danger">{{ $message }}</div>
